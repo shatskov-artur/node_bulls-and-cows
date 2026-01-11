@@ -12,18 +12,18 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+const randomNumber = generateRandomNumber();
+
 const game = (userInput) => {
   if (!checkIsValidUserInput(userInput)) {
     rl.question(
-      'Invalid input. Please enter a 4-digit number that does not start with 0 and has no duplicate digits.',
+      'Invalid input. Please enter a 4-digit number that does not start with 0 and has no duplicate digits: ',
       game,
     );
   }
 
-  const randomNumber = generateRandomNumber();
   const result = getBullsAndCows(userInput, randomNumber);
 
-  console.log(`Generated 4-digit number: ${randomNumber}`);
   console.log(`Bulls: ${result.bulls}, Cows: ${result.cows}`);
 
   if (result.bulls === 4) {
@@ -34,4 +34,4 @@ const game = (userInput) => {
   }
 };
 
-rl.question('Press Enter to generate a random 4-digit number: ', game);
+rl.question('Please enter your 4-digit guess: ', game);
